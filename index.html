@@ -1,0 +1,17 @@
+---
+# You don't need to edit this file, it's empty on purpose.
+# Edit theme's home layout instead if you wanna make some changes
+# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+layout: default
+---
+
+{% for post in site.posts %}
+  <h1>
+    <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+  </h1>
+  <p>{{ post.date | date: "%b %-d, %Y" }}</p>
+    {{ post.excerpt }}
+    {% if post.content contains site.excerpt_separator %}
+      <a href="{{ post.url | relative_url }}">Read on &rarr;</a>
+    {% endif %}
+{% endfor %}

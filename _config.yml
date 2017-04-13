@@ -1,0 +1,8 @@
+title: Stuart Izon
+description: Technical lead at OVO Energy
+github:
+  is_project_page: false
+theme: jekyll-theme-cayman
+exclude:
+  - Gemfile
+  - Gemfile.lock
