@@ -8,6 +8,7 @@ const projects = defineCollection({
     description: z.string(),
     url: z.string().url().optional(),
     githubUrl: z.string().url().optional(),
+    youtubeUrl: z.string().url().optional(),
     screenshot: z.string().optional(),
     tags: z.array(z.string()).default([]),
     featured: z.boolean().default(false),
