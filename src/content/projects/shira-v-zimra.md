@@ -1,7 +1,7 @@
 ---
 title: Shira v'Zimra
 description: An ongoing project to archive, preserve, and share recordings of historic synagogue music from the Western Ashkenazi tradition. Includes original recordings, transcriptions, and educational content published via YouTube and other platforms.
-url: https://www.youtube.com/@ShiravZimra
+url: https://www.youtube.com/@stuartizon
 tags: [music, archival, youtube, jewish-music]
 featured: true
 order: 1
