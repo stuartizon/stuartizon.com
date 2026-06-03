@@ -1,8 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+const featuredProjects = allProjects
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <Layout title="Home" description="Stuart Izon — software engineer, chazzan, and choir director.">
+
   <section class="hero">
     <div class="container">
       <div class="hero-inner">
@@ -11,32 +20,45 @@ import Layout from '../layouts/Layout.astro';
           <h1>Software engineer.<br />Chazzan.<br />Choir director.</h1>
           <div class="hero-body">
             <p>
-              I'm a software engineer with more than fifteen years of experience building
-              large-scale systems, leading engineering teams, and helping organisations
-              deliver complex technology projects.
-            </p>
-            <p>
-              Outside technology, I'm active in Jewish liturgical music as a chazzan,
-              choir director, arranger, and researcher. I lead services, direct choirs,
-              and maintain an archive of historic synagogue music through the
-              Shira v'Zimra project.
-            </p>
-            <p>
-              I'm currently based in Israel and available for both technology
-              opportunities and musical engagements.
+              I'm a software engineer with fifteen years of experience building
+              large-scale systems and leading engineering teams. Outside technology,
+              I work in Jewish liturgical music as a chazzan, choir director, arranger,
+              and researcher — currently based in Israel.
             </p>
           </div>
-          <nav class="hero-cta">
-            <a href="/engineering" class="btn btn-primary">Engineering</a>
-            <a href="/music" class="btn btn-secondary">Music</a>
-          </nav>
         </div>
         <div class="hero-image">
           <img src="/images/stuart.jpg" alt="Stuart Izon" />
+          <a href="/cv.pdf" class="cv-btn" download="Stuart Izon CV.pdf">Download CV</a>
         </div>
       </div>
     </div>
   </section>
+
+  <section class="section bg-surface">
+    <div class="container">
+      <SectionHeader
+        label="Work"
+        title="Featured projects"
+      />
+      <div class="projects-grid">
+        {featuredProjects.map((project) => (
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+            url={project.data.url}
+            githubUrl={project.data.githubUrl}
+            youtubeUrl={project.data.youtubeUrl}
+            tags={project.data.tags}
+            domain={project.data.domain}
+          />
+        ))}
+      </div>
+      <a href="/projects" class="all-projects">All projects →</a>
+    </div>
+  </section>
+
+
 </Layout>
 
 <style>
@@ -67,51 +89,17 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .hero-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
     color: var(--color-muted);
     margin-bottom: 2.5rem;
-  }
-
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    transition: all 0.15s;
-  }
-
-  .btn-primary {
-    background: var(--color-accent);
-    color: #fff;
-  }
-
-  .btn-primary:hover {
-    background: var(--color-text);
-  }
-
-  .btn-secondary {
-    border: 1px solid var(--color-text);
-    color: var(--color-text);
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
   }
 
   .hero-image {
     flex-shrink: 0;
     padding-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
   }
 
   .hero-image img {
@@ -122,18 +110,57 @@ import Layout from '../layouts/Layout.astro';
     border-radius: 8px;
   }
 
+  .cv-btn {
+    display: block;
+    text-align: center;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: var(--color-accent);
+    color: #fff;
+    transition: background 0.15s;
+  }
+
+  .cv-btn:hover {
+    background: var(--color-text);
+  }
+
+  /* Featured projects */
+  .bg-surface { background: var(--color-surface); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .all-projects {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    transition: color 0.15s;
+  }
+
+  .all-projects:hover { color: var(--color-accent); }
+
   @media (max-width: 768px) {
     .hero-inner {
       grid-template-columns: 1fr;
     }
 
-    .hero-image {
-      display: none;
-    }
+    .hero-image { display: none; }
 
     .hero {
       padding: 2rem 0;
       min-height: auto;
+    }
+
+    .split {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
     }
   }
 </style>
