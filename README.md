@@ -1,43 +1,70 @@
-# Astro Starter Kit: Minimal
+# stuartizon.com
 
-```sh
-npm create astro@latest -- --template minimal
+Personal website for Stuart Izon — software engineer, chazzan, and choir director. Built with Astro and deployed on Vercel.
+
+## Stack
+
+- [Astro](https://astro.build) — static site generator
+- Inter (body) + Outfit (headings) via Google Fonts
+- Plain CSS with custom properties — no Tailwind
+- Astro content collections for projects and musical engagements
+
+## Project structure
+
+```
+src/
+├── content/
+│   ├── content.config.ts     # Collection schemas
+│   ├── projects/             # Project entries (.md)
+│   └── engagements/          # Synagogue/choral engagement entries (.md)
+├── layouts/
+│   └── Layout.astro          # Base layout, nav, footer
+├── components/
+│   ├── ProjectCard.astro
+│   └── SectionHeader.astro
+└── pages/
+    ├── index.astro            # Homepage
+    ├── engineering.astro      # Engineering background
+    ├── music.astro            # Music / chazzanut
+    ├── projects.astro         # Projects listing
+    └── contact.astro
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Adding content
 
-## 🚀 Project Structure
+**New project** — add a `.md` file to `src/content/projects/`:
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```md
+---
+title: Project Name
+description: One paragraph description.
+url: https://example.com
+githubUrl: https://github.com/stuartizon/repo
+youtubeUrl: https://www.youtube.com/@stuartizon  # optional
+tags: [tag1, tag2]
+featured: false
+order: 10
+domain: engineering  # engineering | music | both
+---
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+**New engagement** — add a `.md` file to `src/content/engagements/`:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```md
+---
+venue: Synagogue Name
+role: Chazzan
+location: City, Country
+period: 2020 – present  # optional
+order: 10
+---
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Commands
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| Command          | Action                                 |
+| :--------------- | :------------------------------------- |
+| `npm install`    | Install dependencies                   |
+| `npm run dev`    | Start dev server at `localhost:4321`   |
+| `npm run build`  | Build to `./dist/`                     |
+| `npm run preview`| Preview production build locally       |
