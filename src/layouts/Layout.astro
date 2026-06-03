@@ -135,7 +135,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   .section {
-    padding: clamp(4rem, 10vw, 7rem) 0;
+    padding: clamp(2.5rem, 7vw, 5rem) 0;
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 2rem 0;
+    }
   }
 
   /* Nav */
