@@ -20,7 +20,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
     <title>{title} — Stuart Izon</title>
@@ -76,13 +76,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   :root {
-    --color-bg: #ffffff;
-    --color-text: #111111;
-    --color-muted: #555555;
-    --color-faint: #999999;
-    --color-border: #e0e0e0;
-    --color-surface: #f7f7f7;
-    --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --color-bg: #faf8f5;
+    --color-text: #1c1917;
+    --color-muted: #57534e;
+    --color-faint: #a8a29e;
+    --color-border: #e7e5e4;
+    --color-surface: #f0ece6;
+    --color-accent: #1a7a7a;
+    --color-accent-muted: #4a9e9e;
+    --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     --max-width: 1100px;
     --page-padding: clamp(1.5rem, 5vw, 3rem);
@@ -113,14 +115,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   h1, h2, h3, h4 {
-    font-family: var(--font-serif);
-    line-height: 1.25;
-    font-weight: 400;
+    font-family: var(--font-display);
+    line-height: 1.2;
+    font-weight: 600;
   }
 
-  h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
-  h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); }
-  h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
+  h1 { font-size: clamp(2.25rem, 5.5vw, 4rem); font-weight: 600; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); font-weight: 600; letter-spacing: -0.01em; }
+  h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 600; }
 
   p { max-width: 68ch; }
 
@@ -141,7 +143,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     border-bottom: 1px solid var(--color-border);
     position: sticky;
     top: 0;
-    background: rgba(255,255,255,0.96);
+    background: rgba(250,248,245,0.96);
     backdrop-filter: blur(8px);
     z-index: 100;
   }
@@ -157,14 +159,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   .nav-brand {
-    font-family: var(--font-serif);
-    font-size: 1.2rem;
-    letter-spacing: 0.01em;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     margin-right: auto;
     white-space: nowrap;
   }
 
-  .nav-brand:hover { opacity: 0.7; }
+  .nav-brand:hover { color: var(--color-accent); }
 
   .nav-links {
     display: flex;
@@ -181,7 +184,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     transition: color 0.15s;
   }
 
-  .nav-links a:hover { color: var(--color-text); }
+  .nav-links a:hover { color: var(--color-accent); }
 
   .nav-toggle {
     display: none;
@@ -251,5 +254,5 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     gap: 1.5rem;
   }
 
-  .footer-links a:hover { color: var(--color-text); }
+  .footer-links a:hover { color: var(--color-accent); }
 </style>

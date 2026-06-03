@@ -137,7 +137,7 @@ const engagements = (await getCollection('engagements')).sort(
     font-size: 0.7rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--color-faint);
+    color: var(--color-accent);
   }
 
   .hero-bio {
@@ -156,12 +156,12 @@ const engagements = (await getCollection('engagements')).sort(
     font-weight: 500;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    background: var(--color-text);
-    color: var(--color-bg);
-    transition: opacity 0.15s;
+    background: var(--color-accent);
+    color: #fff;
+    transition: background 0.15s;
   }
 
-  .btn:hover { opacity: 0.75; }
+  .btn:hover { background: var(--color-text); }
 
   .bg-surface { background: var(--color-surface); }
 
@@ -182,8 +182,8 @@ const engagements = (await getCollection('engagements')).sort(
   }
 
   .engagement-venue {
-    font-family: var(--font-serif);
     font-size: 1.05rem;
+    font-weight: 500;
   }
 
   .engagement-location, .engagement-period {
@@ -234,7 +234,7 @@ const engagements = (await getCollection('engagements')).sort(
   }
 
   .availability-list li {
-    border-left: 2px solid var(--color-border);
+    border-left: 2px solid var(--color-accent-muted);
     padding-left: 1.5rem;
   }
 

@@ -61,7 +61,7 @@ import Layout from '../layouts/Layout.astro';
     font-size: 0.75rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--color-faint);
+    color: var(--color-accent);
     margin-bottom: 1.25rem;
   }
 
@@ -94,12 +94,12 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .btn-primary {
-    background: var(--color-text);
-    color: var(--color-bg);
+    background: var(--color-accent);
+    color: #fff;
   }
 
   .btn-primary:hover {
-    opacity: 0.75;
+    background: var(--color-text);
   }
 
   .btn-secondary {
@@ -108,8 +108,8 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .btn-secondary:hover {
-    background: var(--color-text);
-    color: var(--color-bg);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
   }
 
   .hero-image {

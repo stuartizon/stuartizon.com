@@ -103,7 +103,7 @@ const experience = [
     font-size: 0.7rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--color-faint);
+    color: var(--color-accent);
   }
 
   .hero-bio {
@@ -122,12 +122,12 @@ const experience = [
     font-weight: 500;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    background: var(--color-text);
-    color: var(--color-bg);
-    transition: opacity 0.15s;
+    background: var(--color-accent);
+    color: #fff;
+    transition: background 0.15s;
   }
 
-  .btn:hover { opacity: 0.75; }
+  .btn:hover { background: var(--color-text); }
 
   .bg-surface { background: var(--color-surface); }
 
@@ -139,7 +139,7 @@ const experience = [
   }
 
   .expertise-item {
-    border-left: 2px solid var(--color-border);
+    border-left: 2px solid var(--color-accent-muted);
     padding-left: 1.5rem;
   }
 
