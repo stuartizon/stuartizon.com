@@ -47,7 +47,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <footer class="footer">
       <div class="footer-inner">
-        <p>&copy; {new Date().getFullYear()} Stuart Izon</p>
+        <p class="footer-credit">
+          &copy; {new Date().getFullYear()} Stuart Izon. Built with
+          <a href="https://astro.build" target="_blank" rel="noopener" class="footer-tech">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="14" height="14" aria-hidden="true"><path d="M50.4 78.5a75.1 75.1 0 0 0-28.5 6.9l24.2-65.7c.7-2 1.9-3.2 3.4-3.2h29c1.5 0 2.7 1.2 3.4 3.2l24.2 65.7s-11.6-7-28.5-7L67 45.5c-.4-1.7-1.6-2.8-2.9-2.8-1.3 0-2.5 1.1-2.9 2.7L50.4 78.5Zm-1.1 28.2Zm-4.2-20.2c-2 6.6-.6 15.8 4.2 20.2a17.5 17.5 0 0 1 .2-.7 5.5 5.5 0 0 1 5.7-4.5c2.8.1 4.3 1.5 4.7 4.7.2 1.1.2 2.3.2 3.5v.4c0 2.7.7 5.2 2.2 7.4a13 13 0 0 0 5.7 4.9v-.3l-.2-.3c-1.8-5.6-.5-9.5 4.4-12.8l1.5-1a73 73 0 0 0 3.2-2.2 16 16 0 0 0 6.8-11.4c.3-2 .1-4-.6-6l-.8.6-1.6 1a37 37 0 0 1-22.4 2.7c-5-.7-9.7-2-13.2-6.2Z" fill="currentColor"/></svg>
+            Astro
+          </a>
+          and hosted on
+          <a href="https://vercel.com" target="_blank" rel="noopener" class="footer-tech">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M12 2L2 20h20L12 2z" fill="currentColor"/></svg>
+            Vercel
+          </a>
+        </p>
         <nav class="footer-links">
           <a href="https://github.com/stuartizon" target="_blank" rel="noopener">GitHub</a>
           <a href="https://www.linkedin.com/in/stuart-izon/" target="_blank" rel="noopener">LinkedIn</a>
@@ -261,4 +272,25 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   .footer-links a:hover { color: var(--color-accent); }
+
+  .footer-credit {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-tech {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: color 0.15s;
+  }
+
+  .footer-tech:hover { color: var(--color-accent); }
+
+  .footer-tech svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
 </style>
