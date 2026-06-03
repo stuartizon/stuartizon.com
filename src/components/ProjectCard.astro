@@ -1,0 +1,84 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  url?: string;
+  tags?: string[];
+  domain?: 'music' | 'engineering' | 'both';
+}
+
+const { title, description, url, tags = [], domain } = Astro.props;
+---
+
+<article class="project-card">
+  {domain && <span class="project-domain" data-domain={domain}>{domain}</span>}
+  <h3>{url ? <a href={url} target="_blank" rel="noopener">{title}</a> : title}</h3>
+  <p>{description}</p>
+  {tags.length > 0 && (
+    <ul class="tag-list">
+      {tags.map((tag) => <li>{tag}</li>)}
+    </ul>
+  )}
+  {url && (
+    <a href={url} target="_blank" rel="noopener" class="card-link">
+      View project →
+    </a>
+  )}
+</article>
+
+<style>
+  .project-card {
+    border: 1px solid var(--color-border);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .project-domain {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-faint);
+    font-family: var(--font-sans);
+  }
+
+  h3 a {
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+
+  h3 a:hover { opacity: 0.65; }
+
+  p {
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin-top: 0.25rem;
+  }
+
+  .tag-list li {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    background: var(--color-surface);
+    color: var(--color-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .card-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    transition: opacity 0.15s;
+  }
+
+  .card-link:hover { opacity: 0.65; }
+</style>

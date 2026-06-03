@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+const projects = allProjects.sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout
+  title="Projects"
+  description="A selection of projects by Stuart Izon — spanning engineering and music."
+>
+  <section class="section">
+    <div class="container">
+      <SectionHeader
+        label="Work"
+        title="Projects"
+        subtitle="A selection of things I've built — spanning engineering, music, and the occasional intersection of both."
+      />
+      <div class="projects-grid">
+        {projects.map((project) => (
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+            url={project.data.url}
+            tags={project.data.tags}
+            domain={project.data.domain}
+          />
+        ))}
+      </div>
+
+      <div class="add-note">
+        <p>
+          More projects available on <a href="https://github.com/stuartizon" target="_blank" rel="noopener">GitHub</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .add-note {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+    color: var(--color-muted);
+  }
+
+  .add-note a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>
