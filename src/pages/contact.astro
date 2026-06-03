@@ -1,112 +1,77 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import Icon from '../components/Icon.astro';
 ---
 
 <Layout
   title="Contact"
-  description="Get in touch with Stuart Izon for engineering or musical engagements."
+  description="Get in touch with Stuart Izon."
 >
   <section class="section">
     <div class="container">
       <SectionHeader
         label="Get in touch"
         title="Contact"
-        subtitle="I'm happy to hear from recruiters, organisations looking for a chazzan or choir director, or anyone with an interesting project."
       />
+      <p class="availability">Currently based in Israel. Open to lead engineering roles, remote consulting, and musical engagements.</p>
 
-      <div class="contact-grid">
-        <div class="contact-block">
-          <h3>Engineering</h3>
-          <p>
-            For technology opportunities, consulting work, or technical collaborations —
-            please email me directly or connect on LinkedIn.
-          </p>
-          <ul class="contact-links">
-            <li>
-              <a href="mailto:stuart.izon@gmail.com">stuart.izon@gmail.com</a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/stuart-izon/" target="_blank" rel="noopener">
-                LinkedIn
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/stuartizon" target="_blank" rel="noopener">
-                GitHub
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="contact-block">
-          <h3>Music</h3>
-          <p>
-            For chazzanut, choir direction, arranging, or musical consultancy enquiries —
-            synagogues and Jewish organisations are welcome to get in touch.
-          </p>
-          <ul class="contact-links">
-            <li>
-              <a href="mailto:stuart.izon@gmail.com">stuart.izon@gmail.com</a>
-            </li>
-            <li>
-              <a href="https://www.youtube.com/@stuartizon" target="_blank" rel="noopener">
-                YouTube
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <ul class="contact-links">
+        <li>
+          <a href="mailto:stuart.izon@gmail.com">
+            <Icon name="email" size={18} />
+            stuart.izon@gmail.com
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/stuart-izon/" target="_blank" rel="noopener">
+            <Icon name="linkedin" size={18} />
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/stuartizon" target="_blank" rel="noopener">
+            <Icon name="github" size={18} />
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@stuartizon" target="_blank" rel="noopener">
+            <Icon name="youtube" size={18} />
+            YouTube
+          </a>
+        </li>
+      </ul>
     </div>
   </section>
 </Layout>
 
 <style>
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    border-top: 1px solid var(--color-border);
-    padding-top: 3rem;
-  }
-
-  .contact-block {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .contact-block h3 {
-    font-size: 1.25rem;
-  }
-
-  .contact-block p {
-    font-size: 0.95rem;
+  .availability {
     color: var(--color-muted);
+    margin-bottom: 2rem;
   }
 
   .contact-links {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
+    max-width: 360px;
   }
 
   .contact-links a {
-    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    padding: 0.9rem 0;
     border-bottom: 1px solid var(--color-border);
-    padding-bottom: 0.5rem;
-    display: block;
-    transition: opacity 0.15s;
+    transition: color 0.15s;
   }
 
-  .contact-links a:hover { opacity: 0.6; }
-
-  @media (max-width: 640px) {
-    .contact-grid {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
+  .contact-links li:first-child a {
+    border-top: 1px solid var(--color-border);
   }
+
+  .contact-links a:hover { color: var(--color-accent); }
 </style>
