@@ -4,10 +4,17 @@ import Icon from '../components/Icon.astro';
 interface Props {
   title: string;
   description?: string;
+  fullTitle?: boolean;
 }
 
-const { title, description = 'Stuart Izon — software engineer, chazzan, and choir director.' } = Astro.props;
+const {
+  title,
+  description = 'Stuart Izon — software engineer, chazzan, and choir director.',
+  fullTitle = false,
+} = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const pageTitle = fullTitle ? title : `${title} — Stuart Izon`;
+const ogImage = new URL('/images/stuart.jpg', Astro.site);
 ---
 
 <!doctype html>
@@ -25,7 +32,21 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    <title>{title} — Stuart Izon</title>
+    <title>{pageTitle}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="Stuart Izon" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
   </head>
   <body>
     <header>
