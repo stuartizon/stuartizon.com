@@ -3,14 +3,16 @@ interface Props {
   label?: string;
   title: string;
   subtitle?: string;
+  level?: 1 | 2;
 }
 
-const { label, title, subtitle } = Astro.props;
+const { label, title, subtitle, level = 2 } = Astro.props;
+const Heading = `h${level}` as 'h1' | 'h2';
 ---
 
 <div class="section-header">
   {label && <span class="label">{label}</span>}
-  <h2>{title}</h2>
+  <Heading>{title}</Heading>
   {subtitle && <p class="subtitle">{subtitle}</p>}
 </div>
 
@@ -28,7 +30,7 @@ const { label, title, subtitle } = Astro.props;
     margin-bottom: 0.75rem;
   }
 
-  h2 {
+  h1, h2 {
     margin-bottom: 0;
   }
 
