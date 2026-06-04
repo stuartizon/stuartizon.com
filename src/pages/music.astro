@@ -38,11 +38,8 @@ const engagements = (await getCollection('engagements')).sort(
 
   <section class="section bg-surface">
     <div class="container">
-      <SectionHeader
-        label="Chazzan"
-        title="Synagogue service"
-        subtitle="I have served as chazzan at the following congregations and as a guest in many others."
-      />
+      <SectionHeader label="Chazzan" title="Synagogue service" />
+      <p class="section-intro">I have served as chazzan at the following congregations and as a guest in many others.</p>
       <ul class="engagement-list">
         {engagements.map(({ data }) => (
           <li class="engagement-item">
@@ -57,11 +54,8 @@ const engagements = (await getCollection('engagements')).sort(
 
   <section class="section">
     <div class="container">
-      <SectionHeader
-        label="Project"
-        title="Shira v'Zimra"
-        subtitle="An archive of historic Western Ashkenazi synagogue music."
-      />
+      <SectionHeader label="Project" title="Shira v'Zimra" />
+      <p class="section-intro">An archive of historic Ashkenazi synagogue music.</p>
       <div class="svz-content">
         <div class="svz-text">
           <p>
@@ -97,11 +91,8 @@ const engagements = (await getCollection('engagements')).sort(
 
   <section class="section bg-surface">
     <div class="container">
-      <SectionHeader
-        label="Availability"
-        title="Engagements"
-        subtitle="I am available for the following types of musical engagement."
-      />
+      <SectionHeader label="Availability" title="Engagements" />
+      <p class="section-intro">I am available for the following types of musical engagement.</p>
       <ul class="availability-list">
         <li>
           <h3>Guest Chazzan</h3>
@@ -139,6 +130,11 @@ const engagements = (await getCollection('engagements')).sort(
     color: var(--color-muted);
     margin-bottom: 2.5rem;
     max-width: 68ch;
+  }
+
+  .section-intro {
+    color: var(--color-muted);
+    margin-bottom: 2rem;
   }
 
   .btn {
