@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404" description="Page not found.">
+  <section class="section">
+    <div class="container">
+      <div class="inner">
+        <div class="text">
+          <p class="code">404</p>
+          <h1>Not found.</h1>
+          <p class="message">
+            The server has not found anything matching the request URI.
+            It probably never will.
+          </p>
+          <a href="/" class="home-link">Go home →</a>
+        </div>
+        <div class="terminal" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 224" role="img" aria-label="Terminal showing a 404 error">
+            <!-- Window chrome -->
+            <rect width="440" height="224" rx="10" fill="#1c1917"/>
+            <rect width="440" height="36" rx="10" fill="#28231f"/>
+            <rect y="20" width="440" height="16" fill="#28231f"/>
+            <circle cx="22" cy="18" r="5.5" fill="#3d3832"/>
+            <circle cx="40" cy="18" r="5.5" fill="#3d3832"/>
+            <circle cx="58" cy="18" r="5.5" fill="#3d3832"/>
+            <!-- Command -->
+            <text x="22" y="65" font-family="ui-monospace, 'Cascadia Code', monospace" font-size="12.5" fill="#a8a29e">$</text>
+            <text x="36" y="65" font-family="ui-monospace, 'Cascadia Code', monospace" font-size="12.5" fill="#e7e5e4">curl -I stuartizon.com/this-page</text>
+            <!-- Response -->
+            <text x="22" y="92" font-family="ui-monospace, 'Cascadia Code', monospace" font-size="12.5" fill="#1a7a7a">HTTP/1.1 404 Not Found</text>
+            <text x="22" y="114" font-family="ui-monospace, 'Cascadia Code', monospace" font-size="12.5" fill="#57534e">content-type: text/html; charset=utf-8</text>
+            <text x="22" y="136" font-family="ui-monospace, 'Cascadia Code', monospace" font-size="12.5" fill="#57534e">x-content-type-options: nosniff</text>
+            <text x="22" y="158" font-family="ui-monospace, 'Cascadia Code', monospace" font-size="12.5" fill="#57534e">connection: close</text>
+            <!-- Prompt + cursor -->
+            <text x="22" y="196" font-family="ui-monospace, 'Cascadia Code', monospace" font-size="12.5" fill="#a8a29e">$</text>
+            <rect x="36" y="183" width="8" height="15" rx="1" fill="#1a7a7a" opacity="0.8">
+              <animate attributeName="opacity" values="0.8;0;0.8" dur="1.2s" repeatCount="indefinite"/>
+            </rect>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .inner {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .code {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  .message {
+    color: var(--color-muted);
+    margin-bottom: 2rem;
+  }
+
+  .home-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    transition: color 0.15s;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .home-link:hover { color: var(--color-accent); }
+
+  .terminal svg {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>
