@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import stuartPhoto from '../assets/stuart.jpg';
 
 const allProjects = await getCollection('projects');
 const featuredProjects = allProjects
@@ -29,7 +31,7 @@ const featuredProjects = allProjects
           <a href="/cv.pdf" class="cv-btn cv-btn-mobile" style="display:none" download="Stuart Izon CV.pdf">Download CV</a>
         </div>
         <div class="hero-image">
-          <img src="/images/stuart.jpg" alt="Stuart Izon" />
+          <Image src={stuartPhoto} alt="Stuart Izon" width={720} />
           <a href="/cv.pdf" class="cv-btn" download="Stuart Izon CV.pdf">Download CV</a>
         </div>
       </div>
