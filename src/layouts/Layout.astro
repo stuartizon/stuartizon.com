@@ -1,5 +1,6 @@
 ---
 import Icon from '../components/Icon.astro';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title: string;
@@ -99,6 +100,7 @@ const ogImage = new URL('/images/og.jpg', Astro.site);
         links?.classList.toggle('open');
       });
     </script>
+    <Analytics />
   </body>
 </html>
 
