@@ -20,6 +20,7 @@ const featuredProjects = allProjects
         <div class="hero-text">
           <p class="hero-label">Stuart Izon</p>
           <h1>Software engineer.<br />Based in Tel Aviv.</h1>
+          <Image src={stuartPhoto} alt="Stuart Izon" width={360} class="profile-mobile" style="display:none" />
           <div class="hero-body">
             <p>
               I'm a software engineer with over fifteen years of experience building
@@ -40,10 +41,7 @@ const featuredProjects = allProjects
 
   <section class="section bg-surface">
     <div class="container">
-      <SectionHeader
-        label="Work"
-        title="Featured projects"
-      />
+      <SectionHeader label="Work" title="Featured projects" />
       <div class="projects-grid">
         {featuredProjects.map((project) => (
           <ProjectCard
@@ -60,7 +58,6 @@ const featuredProjects = allProjects
       <a href="/projects" class="all-projects">All projects →</a>
     </div>
   </section>
-
 
 </Layout>
 
@@ -96,6 +93,15 @@ const featuredProjects = allProjects
     margin-bottom: 2.5rem;
   }
 
+  .profile-mobile {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    object-position: center 15%;
+    border-radius: 8px;
+    margin: 0 auto 1.5rem;
+  }
+
   .hero-image {
     flex-shrink: 0;
     padding-top: 2.5rem;
@@ -126,12 +132,8 @@ const featuredProjects = allProjects
     transition: background 0.15s;
   }
 
-  .cv-btn:hover {
-    background: var(--color-text);
-  }
+  .cv-btn:hover { background: var(--color-text); }
 
-
-  /* Featured projects */
   .bg-surface { background: var(--color-surface); }
 
   .projects-grid {
@@ -155,17 +157,13 @@ const featuredProjects = allProjects
       grid-template-columns: 1fr;
     }
 
-    .hero-image { display: none; }
-    .cv-btn-mobile { display: block !important; }
+    .hero-image { display: none !important; }
+    .profile-mobile { display: block !important; }
+    .cv-btn-mobile  { display: block !important; }
 
     .hero {
       padding: 2rem 0;
       min-height: auto;
-    }
-
-    .split {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
     }
   }
 </style>
