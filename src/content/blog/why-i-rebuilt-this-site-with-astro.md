@@ -3,6 +3,7 @@ title: Why I rebuilt this site with Astro
 description: A few notes on choosing Astro for a small personal site that spans two very different audiences — and why static-first still feels like the right call in 2026.
 pubDate: 2026-06-08
 tags: [astro, static-sites, web-dev]
+draft: true
 ---
 
 I've rebuilt this site more times than I'd like to admit. Each time, the rewrite says less about the previous version being broken and more about me wanting to use the project as an excuse to try something new.
