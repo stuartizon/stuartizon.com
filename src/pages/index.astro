@@ -29,11 +29,9 @@ const featuredProjects = allProjects
               director, arranger, and researcher. I'm currently based in Israel.
             </p>
           </div>
-          <a href="/cv.pdf" class="cv-btn cv-btn-mobile" style="display:none" download="Stuart Izon CV.pdf">Download CV</a>
         </div>
         <div class="hero-image">
           <Image src={stuartPhoto} alt="Stuart Izon" width={720} />
-          <a href="/cv.pdf" class="cv-btn" download="Stuart Izon CV.pdf">Download CV</a>
         </div>
       </div>
     </div>
@@ -119,21 +117,6 @@ const featuredProjects = allProjects
     border-radius: 8px;
   }
 
-  .cv-btn {
-    display: block;
-    text-align: center;
-    padding: 0.7rem 1.5rem;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    background: var(--color-accent);
-    color: #fff;
-    transition: background 0.15s;
-  }
-
-  .cv-btn:hover { background: var(--color-text); }
-
   .bg-surface { background: var(--color-surface); }
 
   .projects-grid {
@@ -159,7 +142,6 @@ const featuredProjects = allProjects
 
     .hero-image { display: none !important; }
     .profile-mobile { display: block !important; }
-    .cv-btn-mobile  { display: block !important; }
 
     .hero {
       padding: 2rem 0;
