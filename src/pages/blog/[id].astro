@@ -99,6 +99,18 @@ const dateFormat: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long',
     line-height: 1.7;
   }
 
+  .prose :global(blockquote) {
+    margin: 2rem 0;
+    padding: 0.25rem 0 0.25rem 1.5rem;
+    border-left: 3px solid var(--color-accent);
+    font-style: italic;
+    color: var(--color-muted);
+  }
+
+  .prose :global(blockquote p) {
+    margin-bottom: 0;
+  }
+
   .prose :global(a) {
     color: var(--color-accent);
     text-decoration: underline;
