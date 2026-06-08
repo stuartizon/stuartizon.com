@@ -7,7 +7,7 @@ Personal website for Stuart Izon — software engineer, chazzan, and choir direc
 - [Astro](https://astro.build) — static site generator
 - Inter (body) + Outfit (headings) via Google Fonts
 - Plain CSS with custom properties — no Tailwind
-- Astro content collections for projects and musical engagements
+- Astro content collections for projects, musical engagements, and blog posts
 - `@astrojs/sitemap` — sitemap generated at build time
 - `@vercel/analytics` — privacy-friendly analytics
 
@@ -20,7 +20,8 @@ src/
 ├── content.config.ts             # Content collection schemas
 ├── content/
 │   ├── projects/                 # Project entries (.md)
-│   └── engagements/              # Synagogue/choral engagement entries (.md)
+│   ├── engagements/              # Synagogue/choral engagement entries (.md)
+│   └── blog/                     # Blog post entries (.md)
 ├── layouts/
 │   └── Layout.astro              # Base layout, nav, footer, analytics
 ├── components/
@@ -32,6 +33,9 @@ src/
     ├── engineering.astro         # Engineering background
     ├── music.astro               # Music / chazzanut
     ├── projects.astro            # Projects listing
+    ├── blog/
+    │   ├── index.astro           # Blog listing
+    │   └── [id].astro            # Individual blog post
     ├── contact.astro
     └── 404.astro
 ```
@@ -64,6 +68,21 @@ location: City, Country
 period: 2020 – present  # optional
 order: 10
 ---
+```
+
+**New blog post** — add a `.md` file to `src/content/blog/`:
+
+```md
+---
+title: Post Title
+description: One or two sentence summary, used in listings and meta tags.
+pubDate: 2026-06-08
+updatedDate: 2026-06-10  # optional
+tags: [tag1, tag2]
+draft: false  # set true to hide from the listing while drafting
+---
+
+Post body in Markdown.
 ```
 
 ## Commands

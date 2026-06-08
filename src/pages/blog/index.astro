@@ -1,0 +1,106 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const dateFormat: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+---
+
+<Layout
+  title="Blog"
+  description="Notes and articles by Stuart Izon on software engineering, web development, and building things."
+>
+  <section class="section">
+    <div class="container">
+      <SectionHeader label="Writing" title="Blog" level={1} />
+      <p class="intro">Notes on software engineering, web development, and the occasional side project.</p>
+
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li class="post-item">
+            <a href={`/blog/${post.id}/`} class="post-link">
+              <time datetime={post.data.pubDate.toISOString()} class="post-date">
+                {post.data.pubDate.toLocaleDateString('en-GB', dateFormat)}
+              </time>
+              <h2>{post.data.title}</h2>
+              <p>{post.data.description}</p>
+              {post.data.tags.length > 0 && (
+                <ul class="tag-list">
+                  {post.data.tags.map((tag) => <li>{tag}</li>)}
+                </ul>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .intro {
+    color: var(--color-muted);
+    margin-bottom: 2rem;
+  }
+
+  .post-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-item {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .post-item:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .post-link {
+    display: block;
+    padding: 2rem 0;
+    transition: opacity 0.15s;
+  }
+
+  .post-link:hover {
+    opacity: 0.7;
+  }
+
+  .post-date {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .post-link h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .post-link p {
+    color: var(--color-muted);
+    line-height: 1.6;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin-top: 0.75rem;
+  }
+
+  .tag-list li {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    background: var(--color-surface);
+    color: var(--color-muted);
+    letter-spacing: 0.02em;
+  }
+</style>

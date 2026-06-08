@@ -1,0 +1,134 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const dateFormat: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+  <article class="section">
+    <div class="container container-narrow">
+      <div class="post-header">
+        <time datetime={post.data.pubDate.toISOString()} class="post-date">
+          {post.data.pubDate.toLocaleDateString('en-GB', dateFormat)}
+        </time>
+        <h1>{post.data.title}</h1>
+        {post.data.tags.length > 0 && (
+          <ul class="tag-list">
+            {post.data.tags.map((tag) => <li>{tag}</li>)}
+          </ul>
+        )}
+      </div>
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      <p class="back-link"><a href="/blog/">&larr; Back to all posts</a></p>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .container-narrow {
+    max-width: 850px;
+  }
+
+  .post-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .post-date {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin-top: 1rem;
+  }
+
+  .tag-list li {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    background: var(--color-surface);
+    color: var(--color-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .prose :global(p) {
+    margin-bottom: 1.25rem;
+    line-height: 1.75;
+  }
+
+  .prose :global(h2) {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose :global(h3) {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    margin: 0 0 1.25rem 1.25rem;
+  }
+
+  .prose :global(li) {
+    margin-bottom: 0.4rem;
+    line-height: 1.7;
+  }
+
+  .prose :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  .prose :global(a:hover) {
+    color: var(--color-accent-muted);
+  }
+
+  .prose :global(code) {
+    font-family: var(--font-sans);
+    background: var(--color-surface);
+    padding: 0.15em 0.4em;
+    font-size: 0.9em;
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.875rem;
+  }
+
+  .back-link a {
+    color: var(--color-muted);
+    transition: color 0.15s;
+  }
+
+  .back-link a:hover {
+    color: var(--color-accent);
+  }
+</style>
