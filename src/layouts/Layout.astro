@@ -8,16 +8,18 @@ interface Props {
   title: string;
   description?: string;
   fullTitle?: boolean;
+  ogImage?: string;
 }
 
 const {
   title,
   description = 'Stuart Izon — software engineer, chazzan, and choir director.',
   fullTitle = false,
+  ogImage: ogImageProp,
 } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const pageTitle = fullTitle ? title : `${title} — Stuart Izon`;
-const ogImage = new URL('/images/og.jpg', Astro.site);
+const ogImage = ogImageProp ? new URL(ogImageProp, Astro.site) : new URL('/images/og.jpg', Astro.site);
 ---
 
 <!doctype html>

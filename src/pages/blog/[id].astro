@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
+import { getImage } from 'astro:assets';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -14,9 +15,13 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 
 const dateFormat: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+
+const ogImage = post.data.ogImage
+  ? (await getImage({ src: post.data.ogImage, width: 1200, format: 'jpg' })).src
+  : undefined;
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout title={post.data.title} description={post.data.description} ogImage={ogImage}>
   <article class="section">
     <div class="container container-narrow">
       <div class="post-header">

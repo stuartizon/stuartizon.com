@@ -3,6 +3,7 @@ title: Can you build a real website without writing code?
 description: I've used AI to help write code before, but this time I built the entire site by prompting, refining, and reviewing without writing any of the code myself. Some takeaways.
 pubDate: 2026-06-08
 tags: [ai, claude-code, reflections]
+ogImage: ./iterative-loop.png
 ---
 
 I've built sites with Claude before, but this is the first time I tried building one without writing a single line of code directly: prompting, refining those prompts, reviewing the code manually, getting it to explain its choices, and asking for changes accordingly. I built the whole thing in about four hours of active time, spread over three days.
