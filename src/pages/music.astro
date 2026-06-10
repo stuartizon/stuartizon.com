@@ -36,14 +36,17 @@ const engagements = (await getCollection('engagements')).sort(
 
   <section class="section bg-surface">
     <div class="container">
-      <SectionHeader label="Chazzan & Choir Director" title="Synagogue service" />
-      <p class="section-intro">I have served as chazzan and choir director at the following congregations, and as a guest chazzan in many others.</p>
+      <SectionHeader label="Guest Chazzan" title="Synagogue service" />
+      <p class="section-intro">I have recently appeared as guest chazzan at the following congregations, among others.</p>
       <ul class="engagement-list">
         {engagements.map(({ data }) => (
           <li class="engagement-item">
-            <span class="engagement-venue">{data.venue}</span>
+            {data.url ? (
+              <a href={data.url} target="_blank" rel="noopener" class="engagement-venue">{data.venue}</a>
+            ) : (
+              <span class="engagement-venue">{data.venue}</span>
+            )}
             {data.location && <span class="engagement-location">{data.location}</span>}
-            <span class="engagement-role">{data.role}</span>
             {data.period && <span class="engagement-period">{data.period}</span>}
           </li>
         ))}
@@ -58,6 +61,10 @@ const engagements = (await getCollection('engagements')).sort(
         <div class="choral-group">
           <h3 class="choral-group-title">Choir direction</h3>
           <ul class="choral-list">
+            <li>
+              <span class="choral-name">Western Marble Arch Synagogue</span>
+              <span class="choral-location">London, UK</span>
+            </li>
             <li>
               <span class="choral-name">Shabbaton Choir</span>
               <span class="choral-location">London, UK</span>
@@ -213,18 +220,18 @@ const engagements = (await getCollection('engagements')).sort(
   .engagement-venue {
     font-size: 1.05rem;
     font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  a.engagement-venue:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
   }
 
   .engagement-location, .engagement-period {
     font-size: 0.8rem;
     color: var(--color-muted);
-  }
-
-  .engagement-role {
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-accent);
   }
 
   .choral-grid {

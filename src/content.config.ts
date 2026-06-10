@@ -38,6 +38,7 @@ const engagements = defineCollection({
     role: z.string(),
     location: z.string().optional(),
     period: z.string().optional(),
+    url: z.string().url().optional(),
     order: z.number().default(99),
   }),
 });
