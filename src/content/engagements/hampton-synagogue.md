@@ -1,6 +1,6 @@
 ---
 venue: Hampton Synagogue
 role: Chazzan
-location: Hampton, USA
+location: New York, USA
 order: 4
 ---

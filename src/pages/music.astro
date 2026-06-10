@@ -19,17 +19,15 @@ const engagements = (await getCollection('engagements')).sort(
       <div class="hero-bio">
         <p>
           Alongside my engineering career, I have been active in Jewish liturgical music
-          for more than twenty years as a chazzan (cantor), choir director, arranger,
-          and researcher.
+          for more than twenty years, as a choir director, as an arranger, and as a
+          chorister. I have also served as a chazzan for many years, and have since
+          undertaken formal study in chazzanut and vocal training to bring further
+          rigour to that practice. More recently, I've begun exploring the musicology
+          and history of synagogue melodies through my <a href="#shira-vzimra">Shira v'Zimra</a> project.
         </p>
         <p>
           I have led services and directed choirs in synagogues across the United
-          Kingdom, the United States, and Israel, working within the Western Ashkenazi
-          tradition.
-        </p>
-        <p>
-          I am available for engagements as a guest chazzan, choir director, arranger,
-          and musical consultant.
+          Kingdom, the United States, and Australia.
         </p>
       </div>
       <a href="/contact" class="btn">Get in touch</a>
@@ -38,13 +36,14 @@ const engagements = (await getCollection('engagements')).sort(
 
   <section class="section bg-surface">
     <div class="container">
-      <SectionHeader label="Chazzan" title="Synagogue service" />
-      <p class="section-intro">I have served as chazzan at the following congregations and as a guest in many others.</p>
+      <SectionHeader label="Chazzan & Choir Director" title="Synagogue service" />
+      <p class="section-intro">I have served as chazzan and choir director at the following congregations, and as a guest chazzan in many others.</p>
       <ul class="engagement-list">
         {engagements.map(({ data }) => (
           <li class="engagement-item">
             <span class="engagement-venue">{data.venue}</span>
             {data.location && <span class="engagement-location">{data.location}</span>}
+            <span class="engagement-role">{data.role}</span>
             {data.period && <span class="engagement-period">{data.period}</span>}
           </li>
         ))}
@@ -53,6 +52,40 @@ const engagements = (await getCollection('engagements')).sort(
   </section>
 
   <section class="section">
+    <div class="container">
+      <SectionHeader label="Choral music" title="Direction & ensembles" />
+      <div class="choral-grid">
+        <div class="choral-group">
+          <h3 class="choral-group-title">Choir direction</h3>
+          <ul class="choral-list">
+            <li>
+              <span class="choral-name">Shabbaton Choir</span>
+              <span class="choral-location">London, UK</span>
+            </li>
+            <li>
+              <span class="choral-name">West Side Choir</span>
+              <span class="choral-location">New York, USA</span>
+            </li>
+            <li>
+              <span class="choral-name">Kol Simcha Choir</span>
+              <span class="choral-location">Melbourne, Australia</span>
+            </li>
+          </ul>
+        </div>
+        <div class="choral-group">
+          <h3 class="choral-group-title">Ensemble membership</h3>
+          <ul class="choral-list">
+            <li><span class="choral-name">Zingers Choir</span></li>
+            <li><span class="choral-name">Neimah Singers</span></li>
+            <li><span class="choral-name">MSO Chorus</span></li>
+            <li><span class="choral-name">Oratorio Society of New York</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="shira-vzimra" class="section bg-surface">
     <div class="container">
       <SectionHeader label="Project" title="Shira v'Zimra" />
       <p class="section-intro">An archive of historic Ashkenazi synagogue music.</p>
@@ -89,7 +122,7 @@ const engagements = (await getCollection('engagements')).sort(
     </div>
   </section>
 
-  <section class="section bg-surface">
+  <section class="section">
     <div class="container">
       <SectionHeader label="Availability" title="Engagements" />
       <p class="section-intro">I am available for the following types of musical engagement.</p>
@@ -129,6 +162,15 @@ const engagements = (await getCollection('engagements')).sort(
     gap: 1rem;
     color: var(--color-muted);
     margin-bottom: 2.5rem;
+  }
+
+  .hero-bio a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .hero-bio a:hover {
+    opacity: 0.65;
   }
 
   .section-intro {
@@ -174,6 +216,49 @@ const engagements = (await getCollection('engagements')).sort(
   }
 
   .engagement-location, .engagement-period {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+  }
+
+  .engagement-role {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .choral-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 3rem;
+  }
+
+  .choral-group-title {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+  }
+
+  .choral-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .choral-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0.6rem;
+  }
+
+  .choral-name {
+    font-weight: 500;
+  }
+
+  .choral-location {
     font-size: 0.8rem;
     color: var(--color-muted);
   }
