@@ -10,6 +10,20 @@ const synagogues = [
   { venue: 'Birmingham Central Synagogue', location: 'Birmingham, UK', url: 'https://centralshul.com' },
   { venue: 'West Side Institutional Synagogue', location: 'New York, USA', url: 'https://wsisny.org' },
 ];
+
+const choirDirection = [
+  { name: 'Western Marble Arch Synagogue', location: 'London, UK' },
+  { name: 'Shabbaton Choir', location: 'London, UK' },
+  { name: 'West Side Choir', location: 'New York, USA' },
+  { name: 'Kol Simcha Choir', location: 'Melbourne, Australia' },
+];
+
+const ensembles = [
+  { name: 'Zingers Choir' },
+  { name: 'Neimah Singers' },
+  { name: 'MSO Chorus' },
+  { name: 'Oratorio Society of New York' },
+];
 ---
 
 <Layout
@@ -62,31 +76,20 @@ const synagogues = [
         <div class="choral-group">
           <h3 class="choral-group-title">Choir direction</h3>
           <ul class="choral-list">
-            <li>
-              <span class="choral-name">Western Marble Arch Synagogue</span>
-              <span class="choral-location">London, UK</span>
-            </li>
-            <li>
-              <span class="choral-name">Shabbaton Choir</span>
-              <span class="choral-location">London, UK</span>
-            </li>
-            <li>
-              <span class="choral-name">West Side Choir</span>
-              <span class="choral-location">New York, USA</span>
-            </li>
-            <li>
-              <span class="choral-name">Kol Simcha Choir</span>
-              <span class="choral-location">Melbourne, Australia</span>
-            </li>
+            {choirDirection.map(({ name, location }) => (
+              <li>
+                <span class="choral-name">{name}</span>
+                <span class="choral-location">{location}</span>
+              </li>
+            ))}
           </ul>
         </div>
         <div class="choral-group">
           <h3 class="choral-group-title">Ensemble membership</h3>
           <ul class="choral-list">
-            <li><span class="choral-name">Zingers Choir</span></li>
-            <li><span class="choral-name">Neimah Singers</span></li>
-            <li><span class="choral-name">MSO Chorus</span></li>
-            <li><span class="choral-name">Oratorio Society of New York</span></li>
+            {ensembles.map(({ name }) => (
+              <li><span class="choral-name">{name}</span></li>
+            ))}
           </ul>
         </div>
       </div>
