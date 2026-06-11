@@ -12,17 +12,51 @@ const synagogues = [
 ];
 
 const choirDirection = [
-  { name: 'Western Marble Arch Synagogue', location: 'London, UK', url: 'https://www.marblearch.org.uk/' },
-  { name: 'Shabbaton Choir', location: 'London, UK', url: 'https://www.shabbatonchoir.com/' },
-  { name: 'West Side Choir', location: 'New York, USA' },
-  { name: 'Kol Simcha Choir', location: 'Melbourne, Australia' },
+  {
+    name: 'Western Marble Arch Synagogue',
+    location: 'London, UK',
+    url: 'https://www.marblearch.org.uk/',
+    note: 'I conducted and arranged for the High Holiday services choir for ten years, working with chazzan Lionel Rosenfeld.',
+  },
+  {
+    name: 'Shabbaton Choir',
+    location: 'London, UK',
+    url: 'https://www.shabbatonchoir.com/',
+    note: 'A world-renowned, UK-based Jewish choral ensemble that specializes in elevating synagogue services and concerts worldwide through highly distinctive, harmony-driven cantorial arrangements. I was associate conductor, arranger, and accompanist for over ten years, working with musical director Stephen Levey.',
+  },
+  {
+    name: 'Kol Simcha Choir',
+    location: 'Melbourne, Australia',
+    note: 'Director of the choir at South Caulfield Synagogue.',
+  },
+  {
+    name: 'West Side Choir',
+    location: 'New York, USA',
+    note: 'Musical director of a small community choir at the Jewish Center.',
+  },
 ];
 
 const ensembles = [
-  { name: 'Zingers Choir', url: 'https://www.instagram.com/thezingerschoir/' },
-  { name: 'Neimah Singers', url: 'https://www.facebook.com/neimahsingers/' },
-  { name: 'MSO Chorus', url: 'https://www.mso.com.au/behind-the-music/mso-chorus' },
-  { name: 'Oratorio Society of New York', url: 'https://osny.org/' },
+  {
+    name: 'Zingers Choir',
+    url: 'https://www.instagram.com/thezingerschoir/',
+    note: 'A New York-based Jewish vocal ensemble that excels at elevating communal Shabbatot and headlining cantorial concerts alongside legendary, world-renowned chazzanim.',
+  },
+  {
+    name: 'Neimah Singers',
+    url: 'https://www.facebook.com/neimahsingers/',
+    note: "London's leading male-voice Jewish liturgical choir, known for performing traditional and contemporary synagogue music at major communal and broadcast events.",
+  },
+  {
+    name: 'MSO Chorus',
+    url: 'https://www.mso.com.au/behind-the-music/mso-chorus',
+    note: "The Melbourne Symphony Orchestra's resident chorus, performing large-scale choral works with the orchestra and guest conductors.",
+  },
+  {
+    name: 'Oratorio Society of New York',
+    url: 'https://osny.org/',
+    note: "One of New York's leading choral societies, performing large-scale oratorio repertoire under Music Director Kent Tritle.",
+  },
 ];
 ---
 
@@ -76,14 +110,17 @@ const ensembles = [
         <div class="choral-group">
           <h3 class="choral-group-title">Choir direction</h3>
           <ul class="choral-list">
-            {choirDirection.map(({ name, location, url }) => (
+            {choirDirection.map(({ name, location, url, note }) => (
               <li>
-                {url ? (
-                  <a href={url} target="_blank" rel="noopener" class="choral-name">{name}</a>
-                ) : (
-                  <span class="choral-name">{name}</span>
-                )}
-                <span class="choral-location">{location}</span>
+                <div class="choral-header">
+                  {url ? (
+                    <a href={url} target="_blank" rel="noopener" class="choral-name">{name}</a>
+                  ) : (
+                    <span class="choral-name">{name}</span>
+                  )}
+                  <span class="choral-location">{location}</span>
+                </div>
+                {note && <p class="choral-note">{note}</p>}
               </li>
             ))}
           </ul>
@@ -91,13 +128,16 @@ const ensembles = [
         <div class="choral-group">
           <h3 class="choral-group-title">Ensemble membership</h3>
           <ul class="choral-list">
-            {ensembles.map(({ name, url }) => (
+            {ensembles.map(({ name, url, note }) => (
               <li>
-                {url ? (
-                  <a href={url} target="_blank" rel="noopener" class="choral-name">{name}</a>
-                ) : (
-                  <span class="choral-name">{name}</span>
-                )}
+                <div class="choral-header">
+                  {url ? (
+                    <a href={url} target="_blank" rel="noopener" class="choral-name">{name}</a>
+                  ) : (
+                    <span class="choral-name">{name}</span>
+                  )}
+                </div>
+                {note && <p class="choral-note">{note}</p>}
               </li>
             ))}
           </ul>
@@ -262,16 +302,22 @@ const ensembles = [
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.8rem;
   }
 
   .choral-list li {
     display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0.8rem;
+  }
+
+  .choral-header {
+    display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     gap: 0.5rem;
-    border-bottom: 1px solid var(--color-border);
-    padding-bottom: 0.6rem;
   }
 
   .choral-name {
@@ -287,6 +333,11 @@ const ensembles = [
 
   .choral-location {
     font-size: 0.8rem;
+    color: var(--color-muted);
+  }
+
+  .choral-note {
+    font-size: 0.85rem;
     color: var(--color-muted);
   }
 
