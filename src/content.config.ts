@@ -35,9 +35,7 @@ const engagements = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/engagements' }),
   schema: z.object({
     venue: z.string(),
-    role: z.string(),
     location: z.string().optional(),
-    period: z.string().optional(),
     url: z.string().url().optional(),
     order: z.number().default(99),
   }),
