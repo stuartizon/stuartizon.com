@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import { Image } from 'astro:assets';
+import shiraVZimraCover from '../assets/shira-vzimra.png';
 
 const synagogues = [
   { venue: 'Young Israel of New Hyde Park', location: 'New York, USA', url: 'https://www.yinhp.org/' },
@@ -148,36 +150,46 @@ const ensembles = [
 
   <section id="shira-vzimra" class="section bg-surface">
     <div class="container">
-      <SectionHeader label="Project" title="Shira v'Zimra" />
-      <p class="section-intro">An archive of historic Ashkenazi synagogue music.</p>
       <div class="svz-content">
         <div class="svz-text">
-          <p>
-            Shira v'Zimra (שירה וזמרה — "Song and Music") is a project dedicated to
-            preserving and disseminating the Western Ashkenazi synagogue music tradition.
-          </p>
-          <p>
-            The project encompasses original recordings, arrangements, and educational
-            content, made freely available through YouTube and other platforms. It aims
-            to document a rich and sometimes overlooked repertoire, making it accessible
-            to cantors, choir directors, and communities worldwide.
-          </p>
-          <a
-            href="https://www.youtube.com/@stuartizon"
-            target="_blank"
-            rel="noopener"
-            class="btn"
-          >
-            Watch on YouTube
-          </a>
+          <SectionHeader label="Project" title="Shira v'Zimra" />
+          <div class="svz-body">
+            <p>
+              Shira v'Zimra (שירה וזמרה — "Song and Music") is a project dedicated to
+              preserving and illuminating synagogue music. At its heart is a book of choral
+              arrangements for male voice choir. During the Covid-19 pandemic, I started to
+              record multitrack performances of these settings, with my
+              own voice layered into four-part harmony as an aural companion to the
+              scores.
+            </p>
+            <p>
+              The project aims to resurface forgotten melodies, document a rich and
+              sometimes overlooked repertoire, and make it freely accessible to chazzanim,
+              ba'alei t'filah, choirs, and communities worldwide through YouTube and other
+              platforms.
+            </p>
+            <div class="svz-ctas">
+              <a
+                href="https://shiravzimra.com"
+                target="_blank"
+                rel="noopener"
+                class="btn"
+              >
+                Get the book
+              </a>
+              <a
+                href="https://www.youtube.com/@stuartizon"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-outline"
+              >
+                Watch on YouTube
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="svz-embed">
-          <p class="embed-note">
-            <!-- Replace with an embedded YouTube playlist -->
-            <a href="https://www.youtube.com/@stuartizon" target="_blank" rel="noopener">
-              View the Shira v'Zimra channel →
-            </a>
-          </p>
+        <div class="svz-cover">
+          <Image src={shiraVZimraCover} alt="Shira v'Zimra book cover" width={400} />
         </div>
       </div>
     </div>
@@ -254,6 +266,17 @@ const ensembles = [
   }
 
   .btn:hover { background: var(--color-text); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--color-text);
+    box-shadow: inset 0 0 0 1px var(--color-muted);
+  }
+
+  .btn-outline:hover {
+    background: var(--color-text);
+    color: #fff;
+  }
 
   .bg-surface { background: var(--color-surface); }
 
@@ -345,37 +368,44 @@ const ensembles = [
 
   .svz-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: 4rem;
     align-items: start;
   }
 
-  .svz-text {
+  .svz-body {
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
 
-  .svz-text p { color: var(--color-muted); }
-
-  .svz-text .btn { margin-top: 0.75rem; align-self: flex-start; }
-
-  .svz-embed {
-    border: 1px solid var(--color-border);
-    aspect-ratio: 16/9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--color-surface);
-  }
-
-  .embed-note {
-    font-size: 0.875rem;
+  .svz-body p {
     color: var(--color-muted);
-    text-align: center;
   }
 
-  .embed-note a:hover { opacity: 0.65; }
+  .svz-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.75rem;
+  }
+
+  .svz-cover img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    .svz-content {
+      grid-template-columns: 1fr;
+    }
+
+    .svz-cover {
+      display: none;
+    }
+  }
 
   .arrangements-text {
     display: flex;
@@ -391,9 +421,4 @@ const ensembles = [
   }
 
   .arrangements-text a:hover { opacity: 0.65; }
-
-  @media (max-width: 768px) {
-    .svz-content { grid-template-columns: 1fr; }
-    .svz-embed { display: none; }
-  }
 </style>
