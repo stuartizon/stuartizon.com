@@ -12,17 +12,17 @@ const synagogues = [
 ];
 
 const choirDirection = [
-  { name: 'Western Marble Arch Synagogue', location: 'London, UK' },
-  { name: 'Shabbaton Choir', location: 'London, UK' },
+  { name: 'Western Marble Arch Synagogue', location: 'London, UK', url: 'https://www.marblearch.org.uk/' },
+  { name: 'Shabbaton Choir', location: 'London, UK', url: 'https://www.shabbatonchoir.com/' },
   { name: 'West Side Choir', location: 'New York, USA' },
   { name: 'Kol Simcha Choir', location: 'Melbourne, Australia' },
 ];
 
 const ensembles = [
-  { name: 'Zingers Choir' },
-  { name: 'Neimah Singers' },
-  { name: 'MSO Chorus' },
-  { name: 'Oratorio Society of New York' },
+  { name: 'Zingers Choir', url: 'https://www.instagram.com/thezingerschoir/' },
+  { name: 'Neimah Singers', url: 'https://www.facebook.com/neimahsingers/' },
+  { name: 'MSO Chorus', url: 'https://www.mso.com.au/behind-the-music/mso-chorus' },
+  { name: 'Oratorio Society of New York', url: 'https://osny.org/' },
 ];
 ---
 
@@ -76,9 +76,13 @@ const ensembles = [
         <div class="choral-group">
           <h3 class="choral-group-title">Choir direction</h3>
           <ul class="choral-list">
-            {choirDirection.map(({ name, location }) => (
+            {choirDirection.map(({ name, location, url }) => (
               <li>
-                <span class="choral-name">{name}</span>
+                {url ? (
+                  <a href={url} target="_blank" rel="noopener" class="choral-name">{name}</a>
+                ) : (
+                  <span class="choral-name">{name}</span>
+                )}
                 <span class="choral-location">{location}</span>
               </li>
             ))}
@@ -87,8 +91,14 @@ const ensembles = [
         <div class="choral-group">
           <h3 class="choral-group-title">Ensemble membership</h3>
           <ul class="choral-list">
-            {ensembles.map(({ name }) => (
-              <li><span class="choral-name">{name}</span></li>
+            {ensembles.map(({ name, url }) => (
+              <li>
+                {url ? (
+                  <a href={url} target="_blank" rel="noopener" class="choral-name">{name}</a>
+                ) : (
+                  <span class="choral-name">{name}</span>
+                )}
+              </li>
             ))}
           </ul>
         </div>
@@ -266,6 +276,13 @@ const ensembles = [
 
   .choral-name {
     font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  a.choral-name:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
   }
 
   .choral-location {
