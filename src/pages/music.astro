@@ -185,29 +185,33 @@ const ensembles = [
 
   <section class="section">
     <div class="container">
-      <SectionHeader label="Availability" title="Engagements" />
-      <p class="section-intro">I am available for the following types of musical engagement.</p>
-      <ul class="availability-list">
-        <li>
-          <h3>Guest Chazzan</h3>
-          <p>Available for Shabbat, Yom Tov, and High Holiday services.</p>
-        </li>
-        <li>
-          <h3>Choir Director</h3>
-          <p>Directing and training synagogue choirs and choral ensembles.</p>
-        </li>
-        <li>
-          <h3>Arranger</h3>
-          <p>Arrangements of liturgical music for voices and ensemble.</p>
-        </li>
-        <li>
-          <h3>Musical Consultant</h3>
-          <p>Advising on repertoire, programme design, and musical direction.</p>
-        </li>
-      </ul>
-      <p class="availability-cta">
-        <a href="/contact" class="btn">Contact me about an engagement</a>
-      </p>
+      <SectionHeader label="Composition" title="Arrangements" />
+      <div class="arrangements-text">
+        <p>
+          I have written vocal arrangements for a wide range of choirs and
+          ensembles, scoring for mixed voices as well as for male voice choir.
+        </p>
+        <p>
+          For male voice choir, I write in the MATB format (Melody, Alto,
+          Tenor, Bass) rather than the more traditional TTBB. This keeps the
+          melody prominent on the page and to the ear, with a spacious
+          harmonic texture; the Tenor part, which often sits above the
+          melody, is sung lightly (sometimes in falsetto) so that it
+          supports rather than competes with the tune.
+        </p>
+        <p>
+          All of my published arrangements can be downloaded for free from my
+          Shira v'Zimra project at
+          <a href="https://shiravzimra.com" target="_blank" rel="noopener">shiravzimra.com</a>.
+        </p>
+        <p>
+          I'm also available to write custom arrangements for your choir or
+          ensemble - whether rescoring an existing piece or arranging a new
+          work - always aiming for results that are singable, practical, and
+          musically satisfying.
+        </p>
+      </div>
+      <a href="/contact" class="btn">Contact me about an arrangement</a>
     </div>
   </section>
 </Layout>
@@ -375,30 +379,21 @@ const ensembles = [
 
   .embed-note a:hover { opacity: 0.65; }
 
-  .availability-list {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .availability-list li {
-    border-left: 2px solid var(--color-accent-muted);
-    padding-left: 1.5rem;
-  }
-
-  .availability-list h3 {
-    font-size: 1.05rem;
-    margin-bottom: 0.4rem;
-  }
-
-  .availability-list p {
-    font-size: 0.9rem;
+  .arrangements-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     color: var(--color-muted);
+    margin-bottom: 2rem;
+    max-width: 700px;
   }
 
-  .availability-cta { margin-top: 1rem; }
+  .arrangements-text a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .arrangements-text a:hover { opacity: 0.65; }
 
   @media (max-width: 768px) {
     .svz-content { grid-template-columns: 1fr; }
