@@ -31,14 +31,4 @@ const blog = defineCollection({
   }),
 });
 
-const engagements = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/engagements' }),
-  schema: z.object({
-    venue: z.string(),
-    location: z.string().optional(),
-    url: z.string().url().optional(),
-    order: z.number().default(99),
-  }),
-});
-
-export const collections = { projects, engagements, blog };
+export const collections = { projects, blog };

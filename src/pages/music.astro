@@ -1,11 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import { getCollection } from 'astro:content';
 
-const engagements = (await getCollection('engagements')).sort(
-  (a, b) => a.data.order - b.data.order,
-);
+const synagogues = [
+  { venue: 'Young Israel of New Hyde Park', location: 'New York, USA', url: 'https://www.yinhp.org/' },
+  { venue: 'The Jewish Center', location: 'New York, USA', url: 'https://jewishcenter.org' },
+  { venue: 'Congregation Ohab Zedek', location: 'New York, USA', url: 'https://ozny.org' },
+  { venue: 'Hampton Synagogue', location: 'New York, USA', url: 'https://thehamptonsynagogue.org' },
+  { venue: 'Birmingham Central Synagogue', location: 'Birmingham, UK', url: 'https://centralshul.com' },
+  { venue: 'West Side Institutional Synagogue', location: 'New York, USA', url: 'https://wsisny.org' },
+];
 ---
 
 <Layout
@@ -39,16 +43,12 @@ const engagements = (await getCollection('engagements')).sort(
       <SectionHeader label="Guest Chazzan" title="Synagogue service" />
       <p class="section-intro">I have recently appeared as guest chazzan at the following congregations, among others.</p>
       <ul class="engagement-list">
-        {engagements.map(({ data }) => (
+        {synagogues.map(({ venue, location, url }) => (
           <li class="engagement-item">
             <h3>
-              {data.url ? (
-                <a href={data.url} target="_blank" rel="noopener" class="engagement-venue">{data.venue}</a>
-              ) : (
-                <span class="engagement-venue">{data.venue}</span>
-              )}
+              <a href={url} target="_blank" rel="noopener" class="engagement-venue">{venue}</a>
             </h3>
-            {data.location && <p class="engagement-location">{data.location}</p>}
+            <p class="engagement-location">{location}</p>
           </li>
         ))}
       </ul>
