@@ -19,14 +19,18 @@ const featuredProjects = allProjects
       <div class="hero-inner">
         <div class="hero-text">
           <p class="hero-label">Stuart Izon</p>
-          <h1>Software engineer.<br />Based in Tel Aviv.</h1>
+          <h1>Technical leader.<br/>Software engineer.<br /></h1>
           <Image src={stuartPhoto} alt="Stuart Izon" width={360} class="profile-mobile" style="display:none" />
           <div class="hero-body">
             <p>
-              I'm a software engineer with over fifteen years of experience building
-              large-scale systems and leading engineering teams. Outside technology,
-              I'm actively involved in Jewish liturgical music as a chazzan, choir
-              director, arranger, and researcher. I'm currently based in Israel.
+              I have over 15 years of experience building large-scale systems, leading
+              engineering teams, and delivering products across finance, energy, retail,
+              and insurance. I'm particularly interested in distributed systems, AI, and
+              modern software engineering.
+            </p>
+            <p>
+              Outside technology, I'm actively involved in Jewish liturgical music as a
+              chazzan, choir director, arranger, and researcher. I'm currently based in Tel Aviv.
             </p>
           </div>
         </div>
@@ -56,7 +60,6 @@ const featuredProjects = allProjects
       <a href="/projects" class="all-projects">All projects →</a>
     </div>
   </section>
-
 </Layout>
 
 <style>
@@ -89,6 +92,9 @@ const featuredProjects = allProjects
   .hero-body {
     color: var(--color-muted);
     margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .profile-mobile {
