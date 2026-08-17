@@ -6,7 +6,7 @@ githubUrl: https://github.com/stuartizon/shiravzimra
 youtubeUrl: https://www.youtube.com/@stuartizon
 tags: [music, archival, youtube, jewish-music]
 featured: true
-order: 1
+order: 2
 domain: music
 ---
 
