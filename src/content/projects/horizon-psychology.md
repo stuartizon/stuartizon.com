@@ -5,6 +5,6 @@ url: https://horizonpsychology.co.uk
 githubUrl: https://github.com/stuartizon/horizonpsychology.co.uk
 tags: [astro, typescript, cloudflare-workers, web]
 featured: false
-order: 5
+order: 3
 domain: engineering
 ---

@@ -5,6 +5,6 @@ url: https://www.shabbatonchoir.com
 githubUrl: https://github.com/stuartizon/shabbatonchoir.com
 tags: [web, music, jewish-music]
 featured: false
-order: 4
+order: 5
 domain: both
 ---
